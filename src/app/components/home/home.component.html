@@ -1,0 +1,59 @@
+<body class="bodybck">
+  <app-navbar
+    (search)="searchResult($event)"
+    (moviesDefault)="resetMoviesDefault($event)"
+    (noSelect)="resetOnButton($event)"
+  ></app-navbar>
+  <div id="tags">
+    <button
+      class="btn btn-outline-info butNoSelection"
+      (click)="noSelectionButton(0)"
+    >
+      <a routerLink="/"></a>No Selection
+    </button>
+    <div *ngFor="let g of genres">
+      <div
+        class="tag"
+        name="tag"
+        (click)="tagsClicked(g.id)"
+        [ngClass]="highValue === g.id ? 'bgcolor' : ''"
+      >
+        {{ g.name }}
+      </div>
+    </div>
+  </div>
+  <main id="main">
+    <div class="movie" *ngFor="let movie of data">
+      <a routerLink="/movie-detail/{{ movie.id }}">
+        <img src="{{ IMG_URL + movie.poster_path }}" alt="Movie-Poster" />
+        <div class="movie-info">
+          <h3>{{ movie.title }}</h3>
+          <span>{{ movie.vote_average }}</span>
+        </div>
+        <div class="overview">
+          {{ movie.overview }}
+        </div>
+      </a>
+    </div>
+  </main>
+  <main id="main"></main>
+  <div class="pagination">
+    <div
+      class="page"
+      id="prev"
+      [ngClass]="prevAct === 1 ? 'prevNextDisabled' : ''"
+      (click)="prev()"
+    >
+      Previous Page
+    </div>
+    <div class="current" id="current">{{ currentPage }}</div>
+    <div
+      class="page"
+      id="next"
+      [ngClass]="nextAct === 1 ? 'prevNextDisabled' : ''"
+      (click)="next()"
+    >
+      Next Page
+    </div>
+  </div>
+</body>

@@ -1,0 +1,49 @@
+<app-navbar></app-navbar>
+<!-- <div class="container"> -->
+<body class="background">
+  <button class="btn btn-outline-info" routerLink="/">Back</button>
+  <div *ngIf="movieDetails">
+    <div class="container d-flex">
+      <div class="img-details">
+        <img
+          src="{{ IMG_URL + movieDetails.poster_path }}"
+          alt="Movie-Poster"
+        />
+      </div>
+      <div class="details" style="color: white">
+        <h3>{{ movieDetails.title }}</h3>
+        <br />
+        <p>
+          <span>
+            <b>Ratings:</b>
+            {{ movieDetails.vote_average }}
+          </span>
+        </p>
+        <div>
+          <p><b>Vote Count:</b> {{ movieDetails.vote_count }}</p>
+        </div>
+        <div>
+          <p><b>Overview:</b> {{ movieDetails.overview }}</p>
+        </div>
+        <div>
+          <p><b>Release Date:</b> {{ movieDetails.release_date }}</p>
+        </div>
+
+        <div>
+          <p><b>Original Language:</b> {{ movieDetails.original_language }}</p>
+        </div>
+        <div>
+          <p><b>Popularity:</b> {{ movieDetails.popularity }}</p>
+        </div>
+        <button
+          type="button"
+          class="btn btn-outline-info"
+          (click)="downloadCsv()"
+        >
+          Export To CSV
+        </button>
+      </div>
+    </div>
+  </div>
+  <!-- </div> -->
+</body>
